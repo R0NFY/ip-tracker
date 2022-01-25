@@ -1,0 +1,204 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+$dark: #222222;
+@mixin center {
+  display: grid;
+  place-items: center;
+}
+body {
+  font-size: 18px;
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins";
+  @include center;
+  color: $dark;
+  width: 100%;
+}
+.button-wrapper {
+  & img {
+    height: 1rem;
+    width: 1rem;
+  }
+}
+.background {
+  width: 100vw;
+  height: 300px;
+  position: absolute;
+  background: url("../assets/pattern-bg.png") no-repeat center;
+  background-size: cover;
+  inset: 0;
+  z-index: 3;
+}
+body > h1 {
+  text-align: center;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  color: rgba(255, 255, 255, 1);
+  font-weight: 500;
+  z-index: 3;
+}
+.search__container {
+  display: flex;
+  grid-auto-flow: column;
+  width: 50%;
+  max-width: 600px;
+  position: relative;
+  height: 100%;
+  z-index: 3;
+  & input {
+    font-family: inherit;
+    font-size: inherit;
+    padding: 1em 1.5em;
+    border-radius: 0.75em 0 0 0.75em;
+    width: 100%;
+    border: none;
+    transition: all 50ms ease-in;
+    font-weight: 50;
+    &:focus {
+      outline: none;
+    }
+  }
+}
+.button-wrapper {
+  width: 90px;
+  height: 100%;
+  display: grid;
+  position: relative;
+  & button {
+    height: 100%;
+    border: none;
+    position: relative;
+    border-radius: 0 0.75em 0.75em 0;
+    background: $dark;
+    color: white;
+    transition: all 75ms ease-in;
+    @include center;
+    &:hover {
+      cursor: pointer;
+      background: #444;
+    }
+  }
+  & img {
+    position: absolute;
+  }
+}
+.data {
+  max-width: 1200px;
+  width: 90%;
+  margin-top: 3rem;
+  display: grid;
+  grid-auto-flow: column;
+  background-color: white;
+  border-radius: 24px;
+  box-shadow: 5px 5px 15px -1px rgba(0, 0, 0, 0.2);
+  z-index: 3;
+  & span {
+    width: 2px;
+    background: rgba(128, 128, 128, 0.274);
+    height: 50%;
+    align-self: center;
+  }
+  & section {
+    padding: 2rem 3rem;
+    & h1 {
+      margin: 0;
+      margin-top: 0.15em;
+    }
+    & h3 {
+      margin: 0;
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      color: grey;
+    }
+  }
+}
+#map {
+  position: absolute;
+  z-index: 2;
+  bottom: 0;
+  height: 100%;
+  width: 100%;
+}
+.attribution {
+  z-index: 100;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background-color: white;
+  color: black;
+  padding: 0.5rem;
+  border-radius: 0 0.5rem 0 0;
+  & a {
+    color: rgb(126, 133, 194);
+  }
+}
+@media (max-width: 1200px) {
+  .data {
+    margin-top: 2rem;
+    grid-auto-flow: row;
+    width: 50%;
+    text-align: center;
+    padding: 1rem 0;
+    & section {
+      padding: 0.5rem 0;
+      margin-left: 1.5rem;
+      margin-right: 1.5rem;
+      & h3 {
+        font-size: 16px;
+      }
+      & h1 {
+        font-size: 30px;
+      }
+    }
+  }
+}
+@media (max-width: 768px) {
+  .leaflet-control-attribution,
+  .leaflet-bottom,
+  .leaflet-right {
+    width: 100%;
+    text-align: center;
+  }
+  .attribution {
+    bottom: 16px;
+    width: 90%;
+    left: 50%;
+    border-radius: 0.5rem 0.5rem 0 0;
+    transform: translateX(-50%);
+    text-align: center;
+  }
+  .search__container,
+  .data {
+    width: 60%;
+  }
+  .data {
+    margin-top: 1.5rem;
+  }
+  body {
+    font-size: 16px;
+    & h1 {
+      font-size: 26px;
+    }
+  }
+  .background {
+    height: 250px;
+  }
+  #map {
+    height: calc(100vh - 250px);
+  }
+  .data section {
+    & h3 {
+      font-size: 14px !important;
+    }
+    & h1 {
+      margin-top: 0.25rem;
+      font-size: 24px !important;
+    }
+  }
+}
+@media (max-width: 576px) {
+  .search__container,
+  .data {
+    width: 80%;
+  }
+}
