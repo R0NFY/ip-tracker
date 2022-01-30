@@ -15,10 +15,10 @@ function data() {
       if (regex.test(query)) {
         ip = `ipAddress=${query}`;
         try {
-          let response = await axios.get(
+          let response = await fetch(
             `https://geo.ipify.org/api/v2/country,city?apiKey=at_WRYBtNKhTAIxa63xsnShf1QILAyyR&${ip}`
           );
-          response = response.data;
+          response = await response.json();
           locationData = response.location;
           this.ip = response.ip;
           this.location = `${locationData.city}, ${locationData.region} ${locationData.postalCode}`;
@@ -33,11 +33,11 @@ function data() {
         }
       } else if (!query && !this.loaded) {
         try {
-          let response = await axios.get(
+          let response = await fetch(
             `https://geo.ipify.org/api/v2/country,city?apiKey=at_WRYBtNKhTAIxa63xsnShf1QILAyyR&`
           );
+          response = await response.json();
           this.loaded = true;
-          response = response.data;
           locationData = response.location;
           this.ip = response.ip;
           this.location = `${locationData.city}, ${locationData.region} ${locationData.postalCode}`;
